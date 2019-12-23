@@ -5,7 +5,7 @@
 	name = Yuji Mise
 	email = miseyu2000@gmail.com
 [pull]
-	rebase = preserve
+	rebase = merges
 [merge]
 	ff=false
 [ghq]
