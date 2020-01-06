@@ -1,7 +1,6 @@
-.vscode
 .DS_Store
 .envrc
-.editorconfig
+vendor/bundle
 ### https://raw.github.com/github/gitignore//Python.gitignore
 
 # Byte-compiled / optimized / DLL files
@@ -20,7 +19,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -127,4 +125,11 @@ Session.vim
 # Auto-generated tag files
 tags
 
+.ruby-version
 
+.idea
+.editorconfig
+
+Pipfile
+Pipfile.lock
+.vscode

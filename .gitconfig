@@ -1,12 +1,14 @@
 [core]
-	editor = vim -c \"set fenc=utf-8\"
-	excludesfile = /Users/miseyu/.gitignore_global
+    editor = vim -c \"set fenc=utf-8\"
+    excludesfile = /Users/miseyu/.gitignore_global
 [user]
-	name = Yuji Mise
-	email = miseyu2000@gmail.com
+    name = Yuji Mise
+    email = miseyu2000@gmail.com
 [pull]
 	rebase = merges
 [merge]
-	ff=false
+    ff=false
 [ghq]
-	root = /Users/miseyu/go/src
+    root = /Users/miseyu/git/src
+[push]
+    default = simple
