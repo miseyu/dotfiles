@@ -24,6 +24,12 @@ function peco-src () {
 zle -N peco-src
 bindkey '^]' peco-src
 
+function peco-git-checkout() {
+  git branch | peco | xargs git checkout
+}
+zle -N peco-git-checkout
+bindkey '^o' peco-git-checkout
+
 setopt nonomatch
 export PATH="$HOME/bin:$PATH"
 
