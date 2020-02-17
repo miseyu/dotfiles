@@ -157,6 +157,8 @@ function gkx() {
 }
 compdef gkx-complete gkx
 
+alias avl='(){ open -na "Google Chrome" --args --incognito --user-data-dir=$HOME/Library/Application\ Support/Google/Chrome/aws-vault/$@ $(aws-vault login $@ --stdout) }'
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/miseyu/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/miseyu/google-cloud-sdk/path.zsh.inc'; fi
 
