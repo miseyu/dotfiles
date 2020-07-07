@@ -3,9 +3,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+alias history="history 1"
+
 # Peco
 function peco-history-selection() {
-  BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+  BUFFER=`fc -l -n 1 | tac  | awk '!a[$0]++' | peco`
   CURSOR=$#BUFFER
   zle reset-prompt
 }
@@ -34,6 +36,7 @@ setopt nonomatch
 export PATH="$HOME/bin:$PATH"
 
 if [ -x "`which rbenv`" ]; then
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
   eval "$(rbenv init -)"
 fi
 if [ -x "`which nodenv`" ]; then
@@ -165,3 +168,12 @@ if [ -f '/Users/miseyu/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/miseyu/g
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/miseyu/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/miseyu/google-cloud-sdk/completion.zsh.inc'; fi
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+. $(brew --prefix asdf)/asdf.sh
+export PATH="/usr/local/opt/ncurses/bin:$PATH"
+export PATH="/opt/metasploit-framework/bin:$PATH"
+
+export EDITOR=vim
+export KUBE_EDITOR=vim
