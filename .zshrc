@@ -3,11 +3,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-alias history="history 1"
-
 # Peco
 function peco-history-selection() {
-  BUFFER=`fc -l -n 1 | tac  | awk '!a[$0]++' | peco`
+  BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
   CURSOR=$#BUFFER
   zle reset-prompt
 }
@@ -36,7 +34,6 @@ setopt nonomatch
 export PATH="$HOME/bin:$PATH"
 
 if [ -x "`which rbenv`" ]; then
-  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
   eval "$(rbenv init -)"
 fi
 if [ -x "`which nodenv`" ]; then
@@ -56,10 +53,12 @@ if [ -x "`which jenv`" ]; then
 fi
 if [ -x "`which gvm`" ]; then
   source $HOME/.gvm/scripts/gvm
-  gvm use go1.13
+  gvm use go1.15
   export GO111MODULE=on
   export GOPATH=$HOME/git
   export PATH=$GOPATH/bin:$PATH
+  export GOPROXY=direct
+  export GOSUMDB=off
 fi
 
 export PATH=$PATH:$HOME/flutter/bin
@@ -88,6 +87,8 @@ function gx-init() {
 function gx-activate() {
   name="$1"
   export CLOUDSDK_CONFIG="${GX_CONFIG_DIR}/${name}"
+  export GOOGLE_APPLICATION_CREDENTIALS="${CLOUDSDK_CONFIG}/application_default_credentials.json"
+
 }
 function gx-current() {
   echo ${CLOUDSDK_CONFIG##*/}
@@ -168,12 +169,12 @@ if [ -f '/Users/miseyu/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/miseyu/g
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/miseyu/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/miseyu/google-cloud-sdk/completion.zsh.inc'; fi
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 . $(brew --prefix asdf)/asdf.sh
-export PATH="/usr/local/opt/ncurses/bin:$PATH"
-export PATH="/opt/metasploit-framework/bin:$PATH"
 
-export EDITOR=vim
-export KUBE_EDITOR=vim
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+export MAKEFLAGS=-j4 $MAKEFLAGS
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/bit bit
