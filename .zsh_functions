@@ -1,0 +1,90 @@
+#--------------------------------------------------------------------#
+# aws-vault                                                          #
+#--------------------------------------------------------------------#
+#--------------------------------------------------------------------#
+# Variables                                                          #
+#--------------------------------------------------------------------#
+AWS_VAULT_PL_DEFAULT_PROFILE=${AWS_VAULT_PL_DEFAULT_PROFILE:-default}
+AWS_VAULT_PL_CHAR=${AWS_VAULT_PL_CHAR:-$'\u2601'} # "the cloud"
+AWS_VAULT_PL_BROWSER=${AWS_VAULT_PL_BROWSER:-''}
+AWS_VAULT_PL_MFA=${AWS_VAULT_PL_MFA:-''}
+
+#--------------------------------------------------------------------#
+# Aliases                                                            #
+#--------------------------------------------------------------------#
+alias av='aws-vault'
+alias avs='aws-vault server'
+
+#--------------------------------------------------------------------#
+# Convenience Functions                                              #
+#--------------------------------------------------------------------#
+function avl() {
+  aws-vault login $@
+}
+
+function avll() {
+  aws-vault login -s $@
+}
+
+function ave() {
+  aws-vault exec $@
+}
+
+function avsh() {
+  aws-vault exec -t $2 $1 -- zsh
+}
+
+#
+# ex: avli default 123456
+#
+function avli() {
+  local login_url="$(avll -t $2 $1)"
+
+  if [ $? -ne 0 ]; then
+    echo "Could not login" >&2
+    return 1
+  fi
+
+  echo "${login_url}" | xargs -t nohup /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %U --no-first-run --new-window --disk-cache-dir=$(mktemp -d /tmp/chrome.XXXXXX) --user-data-dir=$(mktemp -d /tmp/chrome.XXXXXX) > /dev/null 2>&1 &
+}
+
+function avp() {
+  local -a profiles
+  local _profile_text _role
+  if egrep -arn "^\[default\]" ~/.aws/config >/dev/null; then
+    profiles+="default: IAM_Keys"
+  fi
+  for item in $(grep "\[profile " ~/.aws/config | sed -e 's/.*profile \([a-zA-Z0-9_-]*\).*/\1/' | sort); do
+    _profile_text="$item: "
+    _role=$(aws --profile $item configure get role_arn)
+    if [ "$_role" != "" ]; then
+        _profile_text+="ROLE($_role) "
+    fi
+    profiles+=$_profile_text
+  done
+  printf '%s\n' "${profiles[@]}" | column -t
+}
+
+#--------------------------------------------------------------------#
+# Prompt Customization                                               #
+#--------------------------------------------------------------------#
+function prompt_aws_vault_segment() {
+  if [[ -n $AWS_VAULT ]]; then
+    if [ "$AWS_VAULT" = "$AWS_VAULT_PL_DEFAULT_PROFILE" ]; then
+      echo -n "$AWS_VAULT_PL_CHAR"
+    else
+      echo -n "$AWS_VAULT_PL_CHAR $AWS_VAULT"
+    fi
+  fi
+}
+
+#--------------------------------------------------------------------#
+# Utility Functions                                                  #
+#--------------------------------------------------------------------#
+function _using_osx() {
+  [[ $(uname) == "Darwin" ]]
+}
+
+function _using_linux() {
+  [[ $(uname) == "Linux" ]]
+}
