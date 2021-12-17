@@ -3,6 +3,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+autoload -U +X compinit && compinit
+autoload -U +X compdef && compdef
+
 # Peco
 function peco-history-selection() {
   BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
@@ -44,8 +47,8 @@ if [ -x "`which direnv`" ]; then
 fi
 if [ -x "`which pyenv`" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
 fi
 if [ -x "`which jenv`" ]; then
   export PATH="$HOME/.jenv/bin:$PATH"
@@ -53,16 +56,13 @@ if [ -x "`which jenv`" ]; then
 fi
 if [ -x "`which gvm`" ]; then
   source $HOME/.gvm/scripts/gvm
-  gvm use go1.15
+  gvm use go1.17
   export GO111MODULE=on
   export GOPATH=$HOME/git
   export PATH=$GOPATH/bin:$PATH
   export GOPROXY=direct
   export GOSUMDB=off
 fi
-
-export PATH=$PATH:$HOME/flutter/bin
-export PATH="$PATH:~/flutter/bin"
 
 function git(){hub "$@"}
 
@@ -163,6 +163,8 @@ compdef gkx-complete gkx
 
 alias avl='(){ open -na "Google Chrome" --args --incognito --user-data-dir=$HOME/Library/Application\ Support/Google/Chrome/aws-vault/$@ $(aws-vault login $@ --stdout) }'
 
+source $HOME/.zsh_functions
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/miseyu/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/miseyu/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -172,9 +174,17 @@ if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 . $(brew --prefix asdf)/asdf.sh
 
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
-export MAKEFLAGS=-j4 $MAKEFLAGS
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/bit bit
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/mysql-client/lib"
+export CPPFLAGS="-I/usr/local/opt/mysql-client/include"
+export PATH="/usr/local/opt/yq@3/bin:$PATH"
+export PATH="/usr/local/opt/yq@3/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="${HOME}/bin:$PATH"
+
+export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
+PATH=${JAVA_HOME}/bin:${PATH}
+
+source $HOME/.cargo/env
