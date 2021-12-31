@@ -20,6 +20,10 @@ export GOSUMDB=off
 
 function git(){hub "$@"}
 
+if [ -x "`which direnv`" ]; then
+  eval "$(direnv hook zsh)"
+fi
+
 . $(brew --prefix asdf)/libexec/asdf.sh
 . ~/.asdf/plugins/java/set-java-home.zsh
 
