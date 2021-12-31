@@ -21,14 +21,12 @@ export GOSUMDB=off
 function git(){hub "$@"}
 
 . $(brew --prefix asdf)/libexec/asdf.sh
+. ~/.asdf/plugins/java/set-java-home.zsh
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/mysql-client/lib"
 export CPPFLAGS="-I/usr/local/opt/mysql-client/include"
 export PATH="${HOME}/bin:$PATH"
-
-export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
-PATH=${JAVA_HOME}/bin:${PATH}
 
 source $HOME/.cargo/env
