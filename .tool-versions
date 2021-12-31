@@ -1,0 +1,9 @@
+helmfile 0.142.0
+helm 3.7.2
+terraform-docs 0.16.0
+terraform 1.1.2
+python 3.10.1
+nodejs 16.13.1
+golang 1.17.5
+kubectl 1.22.5
+kubectx 0.9.4
