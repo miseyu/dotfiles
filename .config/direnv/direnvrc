@@ -1,14 +1,14 @@
 use_aws_profile(){
   profile_name=$1
 
-  export AWS_ASSUME_ROLE_TTL=1h
+  export AWS_ASSUME_ROLE_TTL=4h
   export $(aws-vault exec $profile_name --prompt=osascript -- env | grep AWS_ | grep -v AWS_VAULT)
 }
 
 use_aws_profile_no_session(){
   profile_name=$1
 
-  export AWS_ASSUME_ROLE_TTL=1h
+  export AWS_ASSUME_ROLE_TTL=4h
   export $(aws-vault exec $profile_name --prompt=osascript --no-session  -- env | grep AWS_ | grep -v AWS_VAULT)
 
 }
