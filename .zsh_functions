@@ -217,3 +217,36 @@ function gkx() {
   gkx-activate "${name}" "${cluster}"
 }
 compdef gkx-complete gkx
+
+function sac() {
+  local login_url
+  login_url="$(_saml2aws_getSigninTokenUrl)"
+
+  profile=${1:-$SAML2AWS_PROFILE}
+  profile=${profile:-saml}
+
+  if [ $? -ne 0 ]; then
+    echo "Could not login" >&2
+    return 1
+  fi
+
+  echo "${login_url}" | xargs -t nohup /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %U --no-first-run --new-window --disk-cache-dir=$(mktemp -d /tmp/chrome.XXXXXX) --user-data-dir=$(mktemp -d /tmp/chrome.XXXXXX) > /dev/null 2>&1 &!
+}
+
+function _saml2aws_getSigninTokenUrl() {
+  session=$( (eval $(saml2aws script); sh -c 'echo "{\"sessionId\": \"$AWS_ACCESS_KEY_ID\",\"sessionKey\":\"$AWS_SECRET_ACCESS_KEY\",\"sessionToken\":\"$AWS_SECURITY_TOKEN\"}"') )
+  signinToken=$(curl -s -G https://signin.aws.amazon.com/federation --data-urlencode "Action=getSigninToken" --data-urlencode "SessionDuration=43200" --data-urlencode "Session=$session" | jq -r '.SigninToken' )
+
+  if [[ -z "$signinToken" ]]; then
+    echo "Could not sign in with current profile." >&2
+    exit 1
+  fi
+
+  consoleUrl=$(_saml2aws_urlencode "https://console.aws.amazon.com/console/home")
+
+  echo "https://signin.aws.amazon.com/federation?Action=login&Issuer=$(_saml2aws_urlencode $SAML2AWS_URL)&Destination=$consoleUrl&SigninToken=$signinToken"
+}
+
+function _saml2aws_urlencode() {
+  echo $1 | nkf -WwMQ | tr = %
+}
