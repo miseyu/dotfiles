@@ -1,24 +1,23 @@
 {
   "editor.fontSize": 18,
   "editor.fontFamily": "Cica",
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "editor.renderControlCharacters": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.renderLineHighlight": "all",
+  "editor.bracketPairColorization.enabled": true,
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
-  "editor.tabSize": 2,
-  "editor.renderWhitespace": "boundary",
   "files.exclude": {
     "**/__pycache__": true
   },
-  "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Monokai",
   "explorer.confirmDelete": false,
   "go.useLanguageServer": true,
   "go.alternateTools": {
     "go-langserver": "gopls"
   },
-  "go.languageServerExperimentalFeatures": {
-    "diagnostics": true
-  },
-  "go.autocompleteUnimportedPackages": true,
   "[go]": {
     "editor.snippetSuggestions": "none",
     "editor.formatOnSave": true,
@@ -49,18 +48,9 @@
   },
   "explorer.confirmDragAndDrop": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "terraform.languageServer": {
-    "external": true,
-    "args": [
-      "serve"
-    ]
-  },
   "go.lintTool": "golangci-lint",
   "go.testFlags": ["-v"],
   "go.testTimeout": "120s",
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
-  },
   "editor.largeFileOptimizations": false,
   "go.toolsManagement.autoUpdate": true,
   "[typescriptreact]": {
@@ -69,7 +59,6 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "redhat.telemetry.enabled": true,
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "shellformat.useEditorConfig": true,
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
@@ -79,5 +68,44 @@
   },
   "[dockercompose]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "protoc": {
+    "editor.formatOnSave": true
+  },
+  "[proto3]": {
+    "editor.defaultFormatter": "zxh404.vscode-proto3"
+  },
+  "[cue]": {
+    "editor.defaultFormatter": "brody715.vscode-cuelang"
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "git.openRepositoryInParentFolders": "always",
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "githubPullRequests.pullBranch": "never",
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false,
+    "yaml": false
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[rust]": {
+    "editor.formatOnSave": true
+  },
+  "rust-analyzer.checkOnSave": true,
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.check.extraArgs": ["--", "-A", "clippy::needless_return"],
+  "rust-analyzer.inlayHints.typeHints.enable": false
 }
