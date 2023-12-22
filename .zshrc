@@ -1,4 +1,3 @@
-# Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
@@ -12,11 +11,15 @@ fi
 
 setopt nonomatch
 
+export PATH=/opt/homebrew/bin:$PATH
 export GO111MODULE=on
 export GOPATH=$HOME/git
 export PATH=$GOPATH/bin:$PATH
 export GOPROXY=direct
 export GOSUMDB=off
+export GPG_TTY=$(tty)
+
+. ~/.asdf/plugins/java/set-java-home.bash
 
 function git(){hub "$@"}
 
@@ -25,12 +28,15 @@ if [ -x "`which direnv`" ]; then
 fi
 
 . $(brew --prefix asdf)/libexec/asdf.sh
-. ~/.asdf/plugins/java/set-java-home.zsh
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/mysql-client/lib"
-export CPPFLAGS="-I/usr/local/opt/mysql-client/include"
-export PATH="${HOME}/bin:$PATH"
 
-source $HOME/.cargo/env
+source /Users/miseyu/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+export PATH="$(brew --prefix bison)/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+export PKG_CONFIG_PATH=$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig

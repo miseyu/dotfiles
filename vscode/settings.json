@@ -22,7 +22,7 @@
     "editor.snippetSuggestions": "none",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     }
   },
   "go.delveConfig": {
@@ -63,11 +63,12 @@
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
+  "yaml.format.enable": true,
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "[dockercompose]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -96,16 +97,21 @@
     "plaintext": true,
     "markdown": true,
     "scminput": false,
-    "yaml": false
+    "yaml": true
   },
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[rust]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": false
   },
   "rust-analyzer.checkOnSave": true,
   "rust-analyzer.check.command": "clippy",
   "rust-analyzer.check.extraArgs": ["--", "-A", "clippy::needless_return"],
-  "rust-analyzer.inlayHints.typeHints.enable": false
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "rust-analyzer.inlayHints.chainingHints.enable": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.diagnostics.disabled": [
+    "unresolved-proc-macro"
+  ]
 }

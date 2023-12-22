@@ -12,22 +12,17 @@
   "files.exclude": {
     "**/__pycache__": true
   },
-  "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Monokai",
   "explorer.confirmDelete": false,
   "go.useLanguageServer": true,
   "go.alternateTools": {
     "go-langserver": "gopls"
   },
-  "go.languageServerExperimentalFeatures": {
-    "diagnostics": true
-  },
-  "go.autocompleteUnimportedPackages": true,
   "[go]": {
     "editor.snippetSuggestions": "none",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     }
   },
   "go.delveConfig": {
@@ -56,9 +51,6 @@
   "go.lintTool": "golangci-lint",
   "go.testFlags": ["-v"],
   "go.testTimeout": "120s",
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
-  },
   "editor.largeFileOptimizations": false,
   "go.toolsManagement.autoUpdate": true,
   "[typescriptreact]": {
@@ -71,11 +63,12 @@
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
+  "yaml.format.enable": true,
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "[dockercompose]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -86,11 +79,39 @@
   "protoc": {
     "editor.formatOnSave": true
   },
-  "clang-format.language.proto.style": "{ IndentWidth: 2, BasedOnStyle: Google }",
   "[proto3]": {
     "editor.defaultFormatter": "zxh404.vscode-proto3"
   },
   "[cue]": {
     "editor.defaultFormatter": "brody715.vscode-cuelang"
-  }
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "git.openRepositoryInParentFolders": "always",
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "githubPullRequests.pullBranch": "never",
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false,
+    "yaml": true
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[rust]": {
+    "editor.formatOnSave": false
+  },
+  "rust-analyzer.checkOnSave": true,
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.check.extraArgs": ["--", "-A", "clippy::needless_return"],
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "rust-analyzer.inlayHints.chainingHints.enable": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.diagnostics.disabled": [
+    "unresolved-proc-macro"
+  ]
 }

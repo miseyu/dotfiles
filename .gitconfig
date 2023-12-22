@@ -5,10 +5,13 @@
     name = Yuji Mise
     email = miseyu2000@gmail.com
 [pull]
-	rebase = merges
+    rebase = merges
 [merge]
     ff=false
 [ghq]
     root = /Users/miseyu/git/src
 [push]
     default = simple
+
+[commit]
+    gpgsign = true

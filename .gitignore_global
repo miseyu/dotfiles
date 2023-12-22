@@ -128,8 +128,7 @@ tags
 .ruby-version
 
 .idea
-.editorconfig
-
-Pipfile
-Pipfile.lock
 .vscode
+
+.tool-versions
+node_modules
