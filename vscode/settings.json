@@ -1,6 +1,7 @@
 {
   "editor.fontSize": 18,
   "editor.fontFamily": "Cica",
+  "editor.fontLigatures": true,
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
   "editor.renderControlCharacters": true,
@@ -10,108 +11,130 @@
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.exclude": {
-    "**/__pycache__": true
+      "**/__pycache__": true
   },
   "workbench.colorTheme": "Monokai",
   "explorer.confirmDelete": false,
   "go.useLanguageServer": true,
   "go.alternateTools": {
-    "go-langserver": "gopls"
+      "go-langserver": "gopls"
   },
   "[go]": {
-    "editor.snippetSuggestions": "none",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
+      "editor.snippetSuggestions": "none",
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+          "source.organizeImports": "explicit"
+      }
   },
   "go.delveConfig": {
-    "debugAdapter": "legacy",
+      "debugAdapter": "legacy"
   },
   "[terraform]": {
-    "editor.formatOnSave": true
+      "editor.formatOnSave": true
   },
   "[shell]": {
-    "editor.formatOnSave": true
+      "editor.formatOnSave": true
   },
   "gopls": {
-    "usePlaceholders": true,
-    "completeUnimported": true,
-    "hoverKind": "SynopsisDocumentation",
-    "linkTarget": "pkg.go.dev",
-    "staticcheck": false,
-    "completionDocumentation": true,
-    "deepCompletion": true
+      "usePlaceholders": true,
+      "completeUnimported": true,
+      "hoverKind": "SynopsisDocumentation",
+      "linkTarget": "pkg.go.dev",
+      "staticcheck": false,
+      "completionDocumentation": true,
+      "deepCompletion": true
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "explorer.confirmDragAndDrop": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "go.lintTool": "golangci-lint",
-  "go.testFlags": ["-v"],
+  "go.testFlags": [
+      "-v"
+  ],
   "go.testTimeout": "120s",
   "editor.largeFileOptimizations": false,
   "go.toolsManagement.autoUpdate": true,
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "redhat.telemetry.enabled": true,
   "editor.suggestSelection": "first",
   "shellformat.useEditorConfig": true,
   "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+      "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "yaml.format.enable": true,
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+      "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "[dockercompose]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "protoc": {
-    "editor.formatOnSave": true
+      "editor.formatOnSave": true
   },
   "[proto3]": {
-    "editor.defaultFormatter": "zxh404.vscode-proto3"
+      "editor.defaultFormatter": "zxh404.vscode-proto3"
   },
   "[cue]": {
-    "editor.defaultFormatter": "brody715.vscode-cuelang"
+      "editor.defaultFormatter": "brody715.vscode-cuelang"
   },
   "workbench.iconTheme": "material-icon-theme",
   "git.openRepositoryInParentFolders": "always",
   "[python]": {
-    "editor.formatOnType": true
+      "editor.formatOnType": true
   },
   "githubPullRequests.pullBranch": "never",
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
-    "*": true,
-    "plaintext": true,
-    "markdown": true,
-    "scminput": false,
-    "yaml": true
+      "*": true,
+      "plaintext": true,
+      "markdown": true,
+      "scminput": false,
+      "yaml": true
   },
   "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+      "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[rust]": {
-    "editor.formatOnSave": false
+      "editor.formatOnSave": false
   },
   "rust-analyzer.checkOnSave": true,
   "rust-analyzer.check.command": "clippy",
-  "rust-analyzer.check.extraArgs": ["--", "-A", "clippy::needless_return"],
+  "rust-analyzer.check.extraArgs": [
+      "--",
+      "-A",
+      "clippy::needless_return"
+  ],
   "rust-analyzer.inlayHints.typeHints.enable": false,
   "rust-analyzer.inlayHints.chainingHints.enable": false,
   "rust-analyzer.inlayHints.parameterHints.enable": false,
   "rust-analyzer.diagnostics.disabled": [
-    "unresolved-proc-macro"
-  ]
+      "unresolved-proc-macro"
+  ],
+  "nxConsole.showNodeVersionOnStartup": false,
+  "editor.stickyScroll.enabled": false,
+  "prisma.showPrismaDataPlatformNotification": false,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "dart.flutterSdkPath": "/Users/miseyu/development/flutter",
+  "[toml]": {
+      "editor.defaultFormatter": "be5invis.toml"
+  },
+  "@azure.argTenant": "",
+  "makefile.configureOnOpen": true,
+  "cursor.cpp.disabledLanguages": [
+      "scminput"
+  ],
+  "[vue]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
