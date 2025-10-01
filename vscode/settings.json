@@ -1,6 +1,5 @@
 {
   "editor.fontSize": 18,
-  "editor.fontFamily": "Cica",
   "editor.fontLigatures": true,
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
@@ -123,8 +122,6 @@
   ],
   "nxConsole.showNodeVersionOnStartup": false,
   "editor.stickyScroll.enabled": false,
-  "prisma.showPrismaDataPlatformNotification": false,
-  "github.copilot.editor.enableAutoCompletions": true,
   "dart.flutterSdkPath": "/Users/miseyu/development/flutter",
   "[toml]": {
       "editor.defaultFormatter": "be5invis.toml"
@@ -134,7 +131,7 @@
   "cursor.cpp.disabledLanguages": [
       "scminput"
   ],
-  "[vue]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[github-actions-workflow]": {
+      "editor.defaultFormatter": "redhat.vscode-yaml"
   }
 }
