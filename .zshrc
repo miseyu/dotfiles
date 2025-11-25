@@ -19,15 +19,11 @@ export GOPROXY=direct
 export GOSUMDB=off
 export GPG_TTY=$(tty)
 
-. ~/.asdf/plugins/java/set-java-home.bash
-
 function git(){hub "$@"}
 
 if [ -x "`which direnv`" ]; then
   eval "$(direnv hook zsh)"
 fi
-
-. $(brew --prefix asdf)/libexec/asdf.sh
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
@@ -39,4 +35,8 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export PATH="$(brew --prefix bison)/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+export LDFLAGS="-L$(brew --prefix openssl)/lib"
+export CPPFLAGS="-I$(brew --prefix openssl)/include"
 export PKG_CONFIG_PATH=$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig
+
+eval "$(~/.local/bin/mise activate zsh)"
