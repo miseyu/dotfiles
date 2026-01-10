@@ -15,8 +15,7 @@ export PATH=/opt/homebrew/bin:$PATH
 export GO111MODULE=on
 export GOPATH=$HOME/git
 export PATH=$GOPATH/bin:$PATH
-export GOPROXY=direct
-export GOSUMDB=off
+export GOPROXY=https://proxy.golang.org
 export GPG_TTY=$(tty)
 
 function git(){hub "$@"}
