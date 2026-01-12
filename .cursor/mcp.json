@@ -8,6 +8,13 @@
       },
       "args": []
     },
+    "iam-policy-autopilot": {
+      "command": "uvx",
+      "args": ["iam-policy-autopilot", "mcp-server"],
+      "env": {},
+     	"disabled": false,
+		  "autoApprove": []
+	  },
     "context7": {
       "command": "npx",
       "args": [
