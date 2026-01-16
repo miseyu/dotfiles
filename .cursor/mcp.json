@@ -8,13 +8,6 @@
       },
       "args": []
     },
-    "iam-policy-autopilot": {
-      "command": "uvx",
-      "args": ["iam-policy-autopilot", "mcp-server"],
-      "env": {},
-     	"disabled": false,
-		  "autoApprove": []
-	  },
     "context7": {
       "command": "npx",
       "args": [
@@ -25,6 +18,16 @@
     "chrome-devtools": {
       "command": "npx",
       "args": ["chrome-devtools-mcp@latest"]
+    },
+    "serena": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena-mcp-server",
+        "--context",
+        "ide-assistant"
+      ]
     }
   }
 }
