@@ -119,5 +119,16 @@
     "typescript.updateImportsOnFileMove.enabled": "always",
     "workbench.colorTheme": "Monokai",
     "workbench.iconTheme": "material-icon-theme",
-    "yaml.format.enable": true
+    "yaml.format.enable": true,
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+          "text": "必ず日本語で記述してください"
+        },
+        {
+          "text": "コミットメッセージは、最初にConventional Commitsに則って記述してください"
+        },
+        {
+          "text": "その後ファイルごとの詳細な変更内容を記述してください"
+        }
+    ]
 }
