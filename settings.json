@@ -85,7 +85,6 @@
   "[cue]": {
     "editor.defaultFormatter": "brody715.vscode-cuelang"
   },
-  "workbench.iconTheme": "material-icon-theme",
   "git.openRepositoryInParentFolders": "always",
   "[python]": {
     "editor.formatOnType": true
@@ -113,5 +112,28 @@
   "rust-analyzer.inlayHints.parameterHints.enable": false,
   "rust-analyzer.diagnostics.disabled": [
     "unresolved-proc-macro"
-  ]
+  ],
+  "workbench.iconTheme": "material-icon-theme",
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "必ず日本語で記述してください"
+    },
+    {
+      "text": "コミットメッセージは、最初にConventional Commitsに則って記述してください"
+    },
+    {
+      "text": "その後ファイルごとの詳細な変更内容を記述してください"
+    }
+  ],
+  "json.schemaDownload.trustedDomains": {
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://biomejs.dev": true
+  },
+  "claudeCode.preferredLocation": "panel"
 }
