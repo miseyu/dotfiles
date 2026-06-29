@@ -5,7 +5,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "@upstash/context7-mcp@latest"
+        "@upstash/context7-mcp"
       ],
       "env": {}
     },
@@ -14,23 +14,20 @@
       "command": "npx",
       "args": [
         "-y",
-        "@playwright/mcp@latest"
+        "@playwright/mcp@latest",
+        "--headless"
       ],
       "env": {}
     },
     "serena": {
       "type": "stdio",
-      "command": "uvx",
+      "command": "serena",
       "args": [
-        "--from",
-        "git+https://github.com/oraios/serena",
-        "serena-mcp-server"
+        "start-mcp-server",
+        "--context=claude-code",
+        "--project-from-cwd"
       ],
       "env": {}
-    },
-    "deepwiki": {
-      "type": "sse",
-      "url": "https://mcp.deepwiki.com/sse"
     }
   }
 }
